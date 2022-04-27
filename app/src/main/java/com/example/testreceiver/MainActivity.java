@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     TextView movies;
     Button mButton;
+    Button mGetButton;
+    Button mDeleteButton;
     ContentResolver contentResolver;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -23,15 +25,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         movies=findViewById(R.id.textView_id);
         mButton=findViewById(R.id.button);
-        //setContentView(R.layout.recycler_layout);
-        //recyclerView = findViewById(R.id.recycler_layout_id);
-        //layoutManager = new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(layoutManager);
+        mGetButton = findViewById(R.id.getMovieButton);
+        mDeleteButton = findViewById(R.id.deleteMovieButton);
 
 
-        //Week7
+
+        contentResolver =getContentResolver();
         Uri uri = Uri.parse("content://fit2081.week8.movie.provider/MovieDetails");
-        Cursor result= getContentResolver().query(uri,null,null,null);
+        Cursor result= contentResolver.query(uri,null,null,null);
         movies.setText("Movies in Database = "+result.getCount()+"");
 
         mButton.setOnClickListener( /*This tells the program to look for the button being pressed*/
@@ -48,5 +49,21 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        mGetButton.setOnClickListener( /*This tells the program to look for the button being pressed*/
+                new View.OnClickListener() { /*This tells the program to let the user view whatever is defined in this function*/
+                    public void onClick(View view) {
+                        Cursor result= contentResolver.query(uri,null,null,null);
+                        movies.setText("Movies in Database = "+result.getCount()+"");
+                    }
+                }
+        );
+        mDeleteButton.setOnClickListener( /*This tells the program to look for the button being pressed*/
+                new View.OnClickListener() { /*This tells the program to let the user view whatever is defined in this function*/
+                    public void onClick(View view) {
+                        contentResolver.delete(uri,"MovieCost", new String[]{"> 100"});
+                    }
+                }
+        );
+
     }
 }
