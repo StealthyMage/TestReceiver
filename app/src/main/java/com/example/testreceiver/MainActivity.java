@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         mGetButton = findViewById(R.id.getMovieButton);
         mDeleteButton = findViewById(R.id.deleteMovieButton);
         String[] selectionArgs = new String[1];
-        selectionArgs[0] = "> 100";
+        selectionArgs[0] = "< 100";
 
 
         contentResolver =getContentResolver();
