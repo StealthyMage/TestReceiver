@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        movies=findViewById(R.id.textView_id);
         //setContentView(R.layout.recycler_layout);
         //recyclerView = findViewById(R.id.recycler_layout_id);
         //layoutManager = new LinearLayoutManager(this);
@@ -22,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Week7
-        Uri uri = Uri.parse("content://fit2081.week8.movie.provider/movies");
+        Uri uri = Uri.parse("content://fit2081.week8.movie.provider/MovieDetails");
         Cursor result= getContentResolver().query(uri,null,null,null);
-        movies.setText(result.getCount()+"");
+        movies.setText("Movies in Database = "+result.getCount()+"");
     }
 }
