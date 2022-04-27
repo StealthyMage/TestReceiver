@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         contentResolver =getContentResolver();
-        Uri uri = Uri.parse("content://fit2081.week8.movie.provider/MovieDetails");
+        Uri uri = Uri.parse("content://fit2081.app.Connor/MovieDetails");
         Cursor result= contentResolver.query(uri,null,null,null);
         movies.setText("Movies in Database = "+result.getCount()+"");
 
