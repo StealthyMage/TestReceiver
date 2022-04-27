@@ -27,9 +27,6 @@ public class MainActivity extends AppCompatActivity {
         mButton=findViewById(R.id.button);
         mGetButton = findViewById(R.id.getMovieButton);
         mDeleteButton = findViewById(R.id.deleteMovieButton);
-        String[] selectionArgs = new String[1];
-        selectionArgs[0] = "< 100";
-
 
         contentResolver =getContentResolver();
         Uri uri = Uri.parse("content://fit2081.app.Connor/MovieDetails");
@@ -61,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         mDeleteButton.setOnClickListener( /*This tells the program to look for the button being pressed*/
                 new View.OnClickListener() { /*This tells the program to let the user view whatever is defined in this function*/
                     public void onClick(View view) {
-                        contentResolver.delete(uri,"MovieCost=?", selectionArgs);
+                        contentResolver.delete(uri,"MovieCost<100", null);
                     }
                 }
         );
