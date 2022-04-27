@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         mDeleteButton.setOnClickListener( /*This tells the program to look for the button being pressed*/
                 new View.OnClickListener() { /*This tells the program to let the user view whatever is defined in this function*/
                     public void onClick(View view) {
-                        contentResolver.delete(uri,"MovieCost", new String[]{"> 100"});
+                        contentResolver.delete(uri,"MovieCost" + "=?", new String[]{"> 100"});
                     }
                 }
         );
