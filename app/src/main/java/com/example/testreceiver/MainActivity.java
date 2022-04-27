@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() { /*This tells the program to let the user view whatever is defined in this function*/
                     public void onClick(View view) {
                         String where = "MovieCost < 100";
-                        contentResolver.delete(uri,where, null);
+                       int delete = contentResolver.delete(uri,where, null);
                     }
                 }
         );
